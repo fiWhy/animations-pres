@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            text-align: center
+        }
+
+        h1 {
+            font-weight: normal;
+            color: #6A5953
+        }
+
+        kbd {
+            font-size: 0.9em;
+            display: inline-block;
+            line-height: 1.1;
+        }
+
+        .box {
+            width: 50%;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        div,
+        h2,
+        img {
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        img:hover {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"><kbd
+            style="display:block;position:absolute; top: 10px;left:calc(50% - 23px);z-index:5;">opacity</kbd><img
+            src="https://html5book.ru/wp-content/uploads/2016/01/css3-filters.jpg"></div>
+</body>
+
+</html>
