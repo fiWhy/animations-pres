@@ -1,0 +1,118 @@
+@keyframes animatedAndOptimized {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(var(--move-distance));
+  }
+  100% {
+    transform: translateY(-var(--move-distance));
+  }
+}
+@keyframes breatheOptimized {
+  from {
+    transform: translate(-50%, -50%) scale(var(--default-scale));
+  }
+  to {
+    transform: translate(-50%, -50%) scale(calc(var(--default-scale) * 1.5));
+  }
+}
+@keyframes breathe {
+  from {
+    width: var(--default-size);
+    height: var(--default-size);
+  }
+  to {
+    width: calc(var(--default-size) * 1.5);
+    height: calc(var(--default-size) * 1.5);
+  }
+}
+@keyframes animated {
+  0% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: -var(--move-distance);
+  }
+  100% {
+    margin-top: var(--move-distance);
+  }
+}
+body,
+html,
+.equalizer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #242232;
+}
+
+.equalizer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.equalizer .dots {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.equalizer .dots .dot {
+  background-color: #cb2373;
+  margin-right: var(--dots-margin);
+  border-radius: 50%;
+  display: flex;
+  transform: translateY(0px);
+  width: var(--dots-size);
+  height: var(--dots-size);
+  position: relative;
+  margin-top: 0px;
+}
+.equalizer .dots .dot:first-child {
+  margin-left: calc(var(--dots-margin) / 2);
+}
+.equalizer .dots .dot:last-child {
+  margin-right: calc(var(--dots-margin) / 2);
+}
+.equalizer .dots .dot.animated {
+  animation: animated 1s alternate-reverse infinite;
+}
+.equalizer .dots .dot.animated:after, .equalizer .dots .dot.animated:before {
+  animation: breathe 1s alternate-reverse infinite;
+}
+.equalizer .dots .dot.animated.performed-animation {
+  animation: animatedAndOptimized 1s alternate-reverse infinite;
+}
+.equalizer .dots .dot.animated.performed-animation:after, .equalizer .dots .dot.animated.performed-animation:before {
+  animation: breatheOptimized 1s alternate-reverse infinite;
+}
+.equalizer .dots .dot:after, .equalizer .dots .dot:before {
+  position: absolute;
+  content: "";
+  box-shadow: 0px 0px 33px -12px #242232;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: var(--default-size);
+  height: var(--default-size);
+  transform-origin: center;
+}
+.equalizer .dots .dot:after {
+  --default-size: 200%;
+  --default-scale: 1;
+  z-index: 1;
+  background-color: rgba(155, 47, 173, 0.2);
+}
+.equalizer .dots .dot:before {
+  --default-size: 150%;
+  --default-scale: 1;
+  z-index: 2;
+  background-color: rgba(155, 47, 173, 0.1);
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */

@@ -1,0 +1,28 @@
+{
+  "name": "animations-pres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flip.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel src/index.html",
+    "equalizer": "npx parcel src/equalizer/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiWhy/animations-pres.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fiWhy/animations-pres/issues"
+  },
+  "homepage": "https://github.com/fiWhy/animations-pres#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "devDependencies": {
+    "sass": "^1.23.0"
+  }
+}
