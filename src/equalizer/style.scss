@@ -1,3 +1,5 @@
+@import "../assets/main.scss";
+
 $color-background: #242232;
 $color-dot: #cb2373;
 $color-dot-shadow: #9b2fad;
@@ -14,20 +16,17 @@ $move: 50px;
 $defaultScale: var(--default-scale);
 $breatheScale: calc(var(--default-scale) * 1.5);
 $moveDistance: var(--move-distance);
+$moveBackDistance: calc(#{$moveDistance} * -1);
 $defaultBreatheSize: var(--default-size);
 $breathe: calc(var(--default-size) * 1.5);
 
 @keyframes animatedAndOptimized {
   0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY($moveDistance);
+    transform: translateY($moveBackDistance);
   }
 
   100% {
-    transform: translateY(-$moveDistance);
+    transform: translateY($moveDistance);
   }
 }
 
@@ -55,15 +54,11 @@ $breathe: calc(var(--default-size) * 1.5);
 
 @keyframes animated {
   0% {
-    margin-top: 0px;
-  }
-
-  50% {
-    margin-top: -$moveDistance;
+    top: $moveBackDistance;
   }
 
   100% {
-    margin-top: $moveDistance;
+    top: $moveDistance;
   }
 }
 
@@ -97,7 +92,7 @@ body {
       width: var(--dots-size);
       height: var(--dots-size);
       position: relative;
-      margin-top: 0px;
+      top: 0px;
       &:first-child {
         margin-left: calc(var(--dots-margin) / 2);
       }
@@ -106,15 +101,16 @@ body {
       }
       &.animated {
         animation: animated 1s alternate-reverse infinite;
-
+        &.performed-animation {
+          animation: animatedAndOptimized 1s alternate-reverse infinite;
+        }
+      }
+      &.breathe {
         &:after,
         &:before {
           animation: breathe 1s alternate-reverse infinite;
         }
-
         &.performed-animation {
-            animation: animatedAndOptimized 1s alternate-reverse infinite;
-
           &:after,
           &:before {
             animation: breatheOptimized 1s alternate-reverse infinite;
@@ -124,6 +120,7 @@ body {
 
       &:after,
       &:before {
+        // will-change: width, height;
         position: absolute;
         content: "";
         box-shadow: 0px 0px 33px -12px rgba($color-background, 1);

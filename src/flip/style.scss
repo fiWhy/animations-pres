@@ -1,0 +1,27 @@
+$color-background: #242232;
+$color-dot: #cb2373;
+$color-dot-shadow: #9b2fad;
+
+html,
+body {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: $color-background;
+}
+
+#example {
+  width: 100px;
+  height: 100px;
+  background-color: $color-dot;
+  border: 2px solid $color-dot-shadow;
+  top: 0px;
+  &.totes-at-the-end {
+    top: 200px;
+  }
+
+  &.animate-on-transforms {
+  }
+}

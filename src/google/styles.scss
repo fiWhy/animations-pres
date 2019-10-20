@@ -1,3 +1,5 @@
+@import "../assets/main.scss";
+
 /* Copyright 2016 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,47 +15,45 @@
  * and limitations under the License. */
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 
 .controls {
-    position: fixed;
-    top: 2vw;
-    left: 2vw;
-    z-index: 1;
+  position: fixed;
+  top: 2vw;
+  left: 2vw;
+  z-index: 1;
 }
 
 .controls button {
-    display: block;
-    font-size: 1em;
-    padding: 1em;
-    margin: 1em;
-    background-color: beige;
-    color: black;
+  display: block;
+  font-size: 1em;
+  padding: 1em;
+  margin: 1em;
 }
 
 .subtract:disabled {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 .mover {
-    height: 3vw;
-    position: absolute;
-    z-index: 0;
+  height: 3vw;
+  position: absolute;
+  z-index: 0;
 }
 
 .border {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 @media (max-width: 600px) {
-    .controls button {
-        min-width: 20vw;
-    }
+  .controls button {
+    min-width: 20vw;
+  }
 }

@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+$button-bg-color: #348aa7;
+$button-disabled-bg-color: #a2b5bb;
+$button-border-color: darken($button-bg-color, 3);
+$button-disabled-border-color: darken($button-disabled-bg-color, 3);
+
+@mixin border($color) {
+  &:hover {
+    background: darken($color, 5%);
+    box-shadow: 0 4px 1px darken($color, 5%);
+    border-bottom: 2px solid darken($color, 8%);
+    transition: all 0.1s ease-in;
+  }
+}
+
+@mixin shadow($color) {
+  box-shadow: 0 5px 0px darken($color, 0%);
+  border-bottom: 2px solid darken($color, 3%);
+}
+
+button {
+  margin: 15px;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif !important;
+  display: inline-block;
+  padding: 15px;
+  margin-right: 5px;
+  height: 50px;
+  min-width: 100px;
+  background: $button-bg-color;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 3px;
+
+  @include border($button-border-color);
+  @include shadow($button-border-color);
+
+  &:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+    box-shadow: none;
+  }
+
+  &[disabled] {
+    background-color: $button-disabled-bg-color;
+    @include border($button-disabled-border-color);
+    @include shadow($button-disabled-border-color);
+  }
+}

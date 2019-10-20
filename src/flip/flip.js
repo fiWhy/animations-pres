@@ -1,4 +1,5 @@
 function run() {
+    var el = this;
     // Get the first position.
     var first = el.getBoundingClientRect();
 
@@ -33,12 +34,11 @@ function run() {
     });
 
     // Capture the end with transitionend
-    el.addEventListener('transitionend',
-        tidyUpAnimations);
+    el.addEventListener('transitionend', tidyUpAnimations);
 }
 
-btn.addEventListener('click', run);
+example.addEventListener('click', run);
 
 function tidyUpAnimations() {
-
+    console.log('END!');
 }

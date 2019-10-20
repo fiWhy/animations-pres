@@ -1,118 +1,152 @@
-@keyframes animatedAndOptimized {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(var(--move-distance));
-  }
-  100% {
-    transform: translateY(-var(--move-distance));
-  }
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+button {
+  margin: 15px;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  display: inline-block;
+  padding: 15px;
+  margin-right: 5px;
+  height: 50px;
+  min-width: 100px;
+  background: #348aa7;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 3px;
+  box-shadow: 0 5px 0px #30809b;
+  border-bottom: 2px solid #2d7790;
 }
-@keyframes breatheOptimized {
+button:hover {
+  background: #2a7088;
+  box-shadow: 0 4px 1px #2a7088;
+  border-bottom: 2px solid #27677c;
+  transition: all 0.1s ease-in;
+}
+button:active {
+  transform: translateY(4px);
+  border-bottom-width: 2px;
+  box-shadow: none;
+}
+button[disabled] {
+  background-color: #a2b5bb;
+  box-shadow: 0 5px 0px #99aeb5;
+  border-bottom: 2px solid #90a7ae;
+}
+button[disabled]:hover {
+  background: #8aa2aa;
+  box-shadow: 0 4px 1px #8aa2aa;
+  border-bottom: 2px solid #829ba3;
+  transition: all 0.1s ease-in;
+}
+
+@keyframes fly {
   from {
-    transform: translate(-50%, -50%) scale(var(--default-scale));
+    transform: scale(0.5) rotate(0deg);
+    opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) scale(calc(var(--default-scale) * 1.5));
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0;
   }
 }
-@keyframes breathe {
-  from {
-    width: var(--default-size);
-    height: var(--default-size);
-  }
-  to {
-    width: calc(var(--default-size) * 1.5);
-    height: calc(var(--default-size) * 1.5);
-  }
-}
-@keyframes animated {
-  0% {
-    margin-top: 0px;
-  }
-  50% {
-    margin-top: -var(--move-distance);
-  }
-  100% {
-    margin-top: var(--move-distance);
-  }
-}
-body,
 html,
-.equalizer {
+body,
+#fly-icons {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  background-color: #0b59b5;
 }
-
-body {
-  background-color: #242232;
+html .item,
+body .item,
+#fly-icons .item {
+  will-change: transform;
 }
-
-.equalizer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+html .triangle,
+html .square,
+html .circle,
+html .crosses,
+body .triangle,
+body .square,
+body .circle,
+body .crosses,
+#fly-icons .triangle,
+#fly-icons .square,
+#fly-icons .circle,
+#fly-icons .crosses {
+  position: absolute !important;
 }
-.equalizer .dots {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-.equalizer .dots .dot {
-  background-color: #cb2373;
-  margin-right: var(--dots-margin);
-  border-radius: 50%;
-  display: flex;
-  transform: translateY(0px);
-  width: var(--dots-size);
-  height: var(--dots-size);
+html .triangle,
+body .triangle,
+#fly-icons .triangle {
   position: relative;
-  margin-top: 0px;
+  width: 0;
+  border-bottom: solid 50px #fcffff;
+  border-right: solid 30px transparent;
+  border-left: solid 30px transparent;
 }
-.equalizer .dots .dot:first-child {
-  margin-left: calc(var(--dots-margin) / 2);
-}
-.equalizer .dots .dot:last-child {
-  margin-right: calc(var(--dots-margin) / 2);
-}
-.equalizer .dots .dot.animated {
-  animation: animated 1s alternate-reverse infinite;
-}
-.equalizer .dots .dot.animated:after, .equalizer .dots .dot.animated:before {
-  animation: breathe 1s alternate-reverse infinite;
-}
-.equalizer .dots .dot.animated.performed-animation {
-  animation: animatedAndOptimized 1s alternate-reverse infinite;
-}
-.equalizer .dots .dot.animated.performed-animation:after, .equalizer .dots .dot.animated.performed-animation:before {
-  animation: breatheOptimized 1s alternate-reverse infinite;
-}
-.equalizer .dots .dot:after, .equalizer .dots .dot:before {
-  position: absolute;
+html .triangle:after,
+body .triangle:after,
+#fly-icons .triangle:after {
   content: "";
-  box-shadow: 0px 0px 33px -12px #242232;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 9px;
+  left: -21px;
+  width: 0;
+  border-bottom: solid 36px #0b59b5;
+  border-right: solid 21px transparent;
+  border-left: solid 21px transparent;
+}
+html .square,
+body .square,
+#fly-icons .square {
+  width: 50px;
+  height: 45px;
+  background-color: #0b59b5;
+  border: 5px solid #fcffff;
+}
+html .circle,
+body .circle,
+#fly-icons .circle {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  width: var(--default-size);
-  height: var(--default-size);
+  background-color: #0b59b5;
+  border: 5px solid #fcffff;
+}
+html .crosses,
+body .crosses,
+#fly-icons .crosses {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+html .crosses:after, html .crosses:before,
+body .crosses:after,
+body .crosses:before,
+#fly-icons .crosses:after,
+#fly-icons .crosses:before {
   transform-origin: center;
+  position: absolute;
+  width: 5px;
+  content: "";
+  height: 55px;
+  background-color: #fcffff;
+  left: 50%;
+  top: 0;
 }
-.equalizer .dots .dot:after {
-  --default-size: 200%;
-  --default-scale: 1;
-  z-index: 1;
-  background-color: rgba(155, 47, 173, 0.2);
+html .crosses:after,
+body .crosses:after,
+#fly-icons .crosses:after {
+  transform: translateX(-50%) rotate(45deg);
 }
-.equalizer .dots .dot:before {
-  --default-size: 150%;
-  --default-scale: 1;
-  z-index: 2;
-  background-color: rgba(155, 47, 173, 0.1);
+html .crosses:before,
+body .crosses:before,
+#fly-icons .crosses:before {
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */
