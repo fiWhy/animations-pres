@@ -9,7 +9,10 @@
     "equalizer": "npx parcel src/equalizer/index.html",
     "google": "npx parcel src/google/index.html",
     "psanimation": "npx parcel src/psanimation/index.html",
-    "flip": "npx parcel src/flip/index.html"
+    "flip": "npx parcel src/flip/index.html",
+    "loading": "npx parcel src/loading/keyframe.html",
+    "transform": "npx parcel src/transform/transform.html",
+    "box": "npx parcel src/slider/index.html"
   },
   "repository": {
     "type": "git",

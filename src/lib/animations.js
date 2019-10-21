@@ -32,12 +32,12 @@ const animate = (options = {}) => {
         loop = false
     } = options;
 
-    let frame, delayed = false;
+    let frame;
     const startTime = performance.now();
     const additionalTimeFraction = timingFunctions[`${timing}TimeFraction`](startingProgress);
     const timingFunction = timingFunctions[timing];
     startingProgress === 0 ? start(startTime) : resume();
-    frameUpdate(requestAnimationFrame(function _fnc(t) {
+    const fnc = () => frameUpdate(requestAnimationFrame(function _fnc(t) {
         let timeFraction = (t - (startTime)) / duration + additionalTimeFraction;
         if (timeFraction > 1) timeFraction = 1;
 
@@ -45,18 +45,7 @@ const animate = (options = {}) => {
 
         update(progress, frame);
 
-        const delayRun = () => {
-            if (delay && !delayed) {
-                setTimeout(() => {
-                    frameUpdate(requestAnimationFrame(_fnc), progress);
-                }, delay);
-            } else {
-                frameUpdate(requestAnimationFrame(_fnc), progress);
-            }
-        }
-
         const loopRun = () => {
-            delayed = false;
             frameUpdate(animate(Object.assign(
                 options,
                 {
@@ -67,16 +56,15 @@ const animate = (options = {}) => {
         }
 
         if (timeFraction < 1) {
-            delayRun();
+            frameUpdate(requestAnimationFrame(_fnc), progress);
         } else if (loop) {
             loopRun();
         } else {
-            delayed = false;
             finish(t);
         }
     }));
 
-    return startTime;
+    return autoplay ? fnc() : ;
 }
 
 export const animation = {

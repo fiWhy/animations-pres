@@ -1,0 +1,49 @@
+@import "../assets/slider.scss";
+:root {
+  --box-size: 100px;
+  --background-color: #222;
+  --gradient-background: linear-gradient(
+    to right,
+    rgba(246, 114, 128, 1) 0%,
+    rgba(192, 108, 132, 1) 50%,
+    rgba(53, 92, 125, 1) 100%
+  );
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  overflow: hidden;
+
+  .spacer {
+    height: 5vh;
+  }
+
+  .box-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 50vh;
+    .box {
+      width: var(--box-size);
+      height: var(--box-size);
+      background: var(--gradient-background);
+    }
+  }
+
+  button {
+    background-color: transparent;
+    color: #fcfcfc;
+    border-color: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 5px;
+  }
+}
