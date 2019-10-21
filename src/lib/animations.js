@@ -37,7 +37,7 @@ const animate = (options = {}) => {
     const additionalTimeFraction = timingFunctions[`${timing}TimeFraction`](startingProgress);
     const timingFunction = timingFunctions[timing];
     startingProgress === 0 ? start(startTime) : resume();
-    const fnc = () => frameUpdate(requestAnimationFrame(function _fnc(t) {
+    frame = frameUpdate(requestAnimationFrame(function _fnc(t) {
         let timeFraction = (t - (startTime)) / duration + additionalTimeFraction;
         if (timeFraction > 1) timeFraction = 1;
 
@@ -46,7 +46,7 @@ const animate = (options = {}) => {
         update(progress, frame);
 
         const loopRun = () => {
-            frameUpdate(animate(Object.assign(
+            frame = frameUpdate(animate(Object.assign(
                 options,
                 {
                     startingProgress: 0,
@@ -56,7 +56,7 @@ const animate = (options = {}) => {
         }
 
         if (timeFraction < 1) {
-            frameUpdate(requestAnimationFrame(_fnc), progress);
+            frame = frameUpdate(requestAnimationFrame(_fnc), progress);
         } else if (loop) {
             loopRun();
         } else {
@@ -64,7 +64,7 @@ const animate = (options = {}) => {
         }
     }));
 
-    return autoplay ? fnc() : ;
+    return startTime;
 }
 
 export const animation = {
